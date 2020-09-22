@@ -1,5 +1,5 @@
 {
-    "name": "project02",
+    "name": "serialInputToLcd",
     "description": "",
     "dependencies": {
         "core": "*",
