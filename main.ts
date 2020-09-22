@@ -4,16 +4,13 @@ LCD1IN8.LCD_Init()
 LCD1IN8.LCD_Clear()
 while (true) {
     led.plot(0, 0)
-    for (let index = 0; index < 19; index++) {
-        lineString = "" + lineString + convertToText(randint(0, 9))
-    }
+    lineString = serial.readUntil(serial.delimiters(Delimiters.NewLine))
     LCD1IN8.DisString(
     10,
     actualRow * 10,
     lineString,
     0
     )
-    lineString = convertToText(0)
     actualRow = actualRow + 1
     LCD1IN8.LCD_Display()
     led.unplot(0, 0)
