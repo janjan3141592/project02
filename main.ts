@@ -3,14 +3,17 @@ let lineString = ""
 LCD1IN8.LCD_Init()
 LCD1IN8.LCD_Clear()
 while (true) {
-    lineString = serial.readUntil(serial.delimiters(Delimiters.NewLine))
     led.plot(0, 0)
+    for (let index = 0; index < 19; index++) {
+        lineString = "" + lineString + convertToText(randint(0, 9))
+    }
     LCD1IN8.DisString(
     10,
     actualRow * 10,
-    lineString.substr(0, 19),
+    lineString,
     0
     )
+    lineString = convertToText(0)
     actualRow = actualRow + 1
     LCD1IN8.LCD_Display()
     led.unplot(0, 0)
